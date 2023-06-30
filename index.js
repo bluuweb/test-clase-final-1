@@ -1,6 +1,7 @@
 import { config } from 'dotenv'
 config()
 
+import { authMiddleware } from './middlewares/authMiddleware.js'
 import express from 'express'
 import cors from 'cors'
 
@@ -66,25 +67,6 @@ app.get('/api/products/:id', async (req, res) => {
     product: {},
   })
 })
-
-// middleware bearer toke
-const authMiddleware = (req, res, next) => {
-  const { authorization } = req.headers
-  if (!authorization) {
-    return res.status(401).json({
-      ok: false,
-      message: 'No token provided',
-    })
-  }
-  const token = authorization.split(' ')[1]
-  if (token !== 'exampleToken') {
-    return res.status(401).json({
-      ok: false,
-      message: 'Invalid token',
-    })
-  }
-  next()
-}
 
 // private routes
 
