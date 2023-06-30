@@ -1,4 +1,4 @@
-// middleware bearer toke
+// middleware bearer token
 export const authMiddleware = (req, res, next) => {
   const { authorization } = req.headers
   if (!authorization) {
