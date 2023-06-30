@@ -67,7 +67,7 @@ app.get('/api/products/:id', async (req, res) => {
   })
 })
 
-// middleware bearer token
+// middleware bearer toke
 const authMiddleware = (req, res, next) => {
   const { authorization } = req.headers
   if (!authorization) {
